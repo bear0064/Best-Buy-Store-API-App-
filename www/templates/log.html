@@ -1,0 +1,19 @@
+<ion-view view-title="Log">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="log in logs">
+        <h2>{{log.time | date}}</h2>
+        <h3 ng-show="log.text.error.status !=null ">Status: {{log.text.error.status}}</h3>
+        <div ng-show="log.text.error.message !=null " id="message" class="item item-text-wrap">
+          Response: {{log.text.error.message}}
+        </div>
+        <div id="text" class="item item-text-wrap">
+          {{log.text}}
+        </div>
+        <div id="stack" class="item item-text-wrap">
+          {{log.stack}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

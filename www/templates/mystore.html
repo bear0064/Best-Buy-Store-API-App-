@@ -1,0 +1,40 @@
+<ion-view view-title="My Store">
+  <ion-content ion-content has-header has-footer>
+    <ion-list>
+
+      <div ng-show="closestStores.total == 0">
+        <h3>Sorry, we couldn’t find any results.</h3>
+      </div>
+
+      <ion-item ng-repeat="store in closestStores.stores track by $index" >
+
+        <div ng-if="!closestStores.total == 0">
+          {{store.name}}
+        </div>
+
+        <div ng-show="store.address">
+          <h4>{{store.address}}</h4>
+          <h4>{{store.address2}}</h4>
+          <h4>{{store.city}}</h4>
+          <h5>{{store.hoursAmPm}}</h5>
+          <h5>{{store.phone}}</h5>
+          <h5>{{store.region}}</h5>
+        </div>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+
+  <form name="myForm" data-ng-submit="cityLookup(cityText)">
+    <ion-footer-bar class="bar bar-footer item-input-inset">
+      <label class="item-input-wrapper">
+        <input name="cityText" class="cityText" type="text" placeholder="Find By Store" ng-model="cityText" ng-minlength="1" required>
+      </label>
+      <button ng-disabled="myForm.$invalid" class="button button-clear add">Search</button>
+
+    </ion-footer-bar>
+  </form>
+
+</ion-view>

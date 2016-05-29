@@ -1,0 +1,50 @@
+<ion-view view-title="Login">
+
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Login</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <form name="myForm" ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" name="username" ng-model="data.username" ng-minlength="1"
+                 required="required" />
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-model="data.password" ng-minlength="5"
+                 required="required"/>
+
+        </label>
+        <div class="text-center">
+
+          <button class="button button-positive" ng-disabled="myForm.$invalid" type="submit">Log in</button>
+
+
+
+          <button class="button button-positive" type="submit" ng-click="authenticate('facebook')">Login With Facebook</button>
+
+        </div>
+        <div id="alert"> </div>
+
+        <div ng-messages="myForm.password.$error" role="alert">
+
+        <div ng-message="minlength">Your password must be at least 5 characters long</div>
+        </div>
+
+        <div ng-messages="myForm.username.$error" role="alert">
+          <div>
+            <div ng-message="required">Enter a username & password</div>
+          </div>
+        </div>
+
+
+      </div>
+    </form>
+
+
+
+  </ion-content>
+</ion-view>

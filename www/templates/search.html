@@ -1,0 +1,31 @@
+<ion-view view-title="Search">
+  <ion-content>
+
+    <div ng-show="searchedProduct.total == 0">
+      <h3>Sorry, we couldn’t find any results.</h3>
+    </div>
+
+    <ion-slide-box on-slide-changed="slideHasChanged($index)"  show-pager="false" active-slide="currentIndex">
+
+      <ion-slide ng-repeat="product in searchedProduct.products track by $index" >
+        <div class="itemSlide">
+          <img src="{{product.image}}"/>
+          <h1 id="price">{{product.salePrice | currency}}</h1>
+          <h3>{{product.name}}</h3>
+          <h4>SKU: {{product.sku}}</h4>
+
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+
+  <form name="myForm" data-ng-submit="findProduct(productText)">
+    <ion-footer-bar class="bar bar-footer item-input-inset">
+      <label class="item-input-wrapper">
+        <input name="productText" class="productFind" type="text" placeholder="Search For A Product" ng-model="productText" ng-minlength="1" required>
+      </label>
+      <button ng-disabled="myForm.$invalid" class="button button-clear add">Search</button>
+
+    </ion-footer-bar>
+  </form>
+</ion-view>
